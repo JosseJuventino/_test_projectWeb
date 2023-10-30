@@ -1,16 +1,17 @@
 import CommonButton from "../common-button/CommonButton";
-import { AiOutlineArrowRight } from "react-icons/ai";
 
 function BannerInfo({ bannerInformation }) {
   return (
     <>
       {bannerInformation.map((banner) => (
         <div
-          className="flex flex-row items-center justify-around px-36"
+          className={`md:flex ${
+            banner.isReversed ? "md:flex-row-reverse" : "md:flex-row"
+          } md:text-left text-center mt-5 md:items-center md:justify-around md:px-20 flex flex-col items-center text-3xl justify-center`}
           key={banner.title}
         >
-          <div className="w-3/6">
-            <h2 className="font-bold text-4xl mb-5 font-primary">
+          <div className="md:w-3/6 w-4/5 sm:flex sm:flex-col">
+            <h2 className="font-bold sm:text-3xl md:text-3xl lg:text-4xl mb-5 font-primary">
               {banner.title}
             </h2>
             <p className="text-text-secondary font-normal text-sm font-secondary">
@@ -21,13 +22,17 @@ function BannerInfo({ bannerInformation }) {
               <CommonButton
                 link="#"
                 text={banner.buttonText}
-                icon={<AiOutlineArrowRight />}
+                icon={"fa-solid fa-arrow-right"}
               />
             )}
           </div>
 
-          <figure className="w-1/5">
-            <img src={banner.image} alt="image-banner" />
+          <figure className="lg:w-1/5 w-2/4 md:w-1/4">
+            <img
+              src={banner.image}
+              className="object-cover w-full h-full"
+              alt="image-banner"
+            />
           </figure>
         </div>
       ))}
