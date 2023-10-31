@@ -29,7 +29,7 @@ const bannerInfo = [
 function Index() {
   return (
     <>
-      <div className="bg-background-primary">
+      <div className="bg-background-primary font-primary">
         <Header />
         <BannerInfo bannerInformation={bannerInfo} isReversed={false} />
         <Footer />

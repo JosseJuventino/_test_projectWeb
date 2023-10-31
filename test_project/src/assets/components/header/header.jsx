@@ -5,10 +5,11 @@ import { IoClose } from "react-icons/io5";
 import logo_uca from "../../../assets/images/logo_uca.png";
 import user from "../../../assets/images/user_default.jpeg";
 import ButtonHeader from "../general/ButtonHeader";
+import { linksLoggedIn, linksLoggedOut } from "../../constant/links";
 
 /** TODO: Fix the modal animation on leave */
 
-function Header() {
+function Header({ isLoggedIn }) {
   const [modal, setShowModal] = useState(false);
 
   function toggleModal() {
@@ -16,16 +17,17 @@ function Header() {
   }
 
   function renderLinks() {
-    return (
-      <>
-        <a href="#" className={`mx-2 ${modal ? "my-10 text-xl" : ""}`}>
-          Nosotros
-        </a>
-        <a href="#" className={`mx-2 ${modal ? "my-10 text-xl" : ""}`}>
-          Contacto
-        </a>
-      </>
-    );
+    const linksToRender = isLoggedIn ? linksLoggedIn : linksLoggedOut;
+
+    return linksToRender.map((link) => (
+      <a
+        key={link.text}
+        href={link.href}
+        className={`mx-2 ${modal ? "my-10 text-xl" : ""}`}
+      >
+        {link.text}
+      </a>
+    ));
   }
 
   function renderLoginButton() {
@@ -34,6 +36,7 @@ function Header() {
       className: `mx-2 ${modal ? "my-10" : ""}`,
       text: "Iniciar Sesión",
     };
+
     return <ButtonHeader {...buttonProps} />;
   }
 
@@ -60,7 +63,7 @@ function Header() {
       <div
         className={`${
           modal
-            ? "flex fixed top-0 left-0 w-full flex-col h-screen slide-from-right-enter"
+            ? "flex fixed top-0 left-0 w-full flex-col h-full z-50 slide-from-right-enter"
             : "hidden slide-from-right-leave"
         } justify-center items-center bg-hover-black-custom py-9`}
       >

@@ -2,6 +2,8 @@ import LinkFooter from "./linkFooter";
 import SocialMedia from "./SocialMedia";
 import logo_ucav2 from "../../../assets/images/logo_ucav2.png";
 
+//This is the code for the footer of the page
+
 function Footer() {
   return (
     <>
