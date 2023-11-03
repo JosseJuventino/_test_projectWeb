@@ -114,9 +114,9 @@ function App() {
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-
+          <Route path="/project-detail" element={<ProjectDetail />} />
           {/* Rutas para proyectos */}
-          {projects.map((project, index) => (
+          {/*{projects.map((project, index) => (
             <Route
               key={index}
               path={`/project/${project.title
@@ -124,7 +124,7 @@ function App() {
                 .toLowerCase()}`}
               element={<ProjectDetail project={project} />}
             />
-          ))}
+              ))}*/}
         </Routes>
       </BrowserRouter>
     </>
