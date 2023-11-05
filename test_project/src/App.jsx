@@ -5,6 +5,8 @@ import Index from "./assets/views";
 import Login from "./assets/views/Login";
 import Dashboard from "./assets/views/Dashboard";
 import ProjectDetail from "./assets/views/ProjectDetail";
+import useProjects from "./services/useProjects";
+import { useEffect } from "react";
 
 // Datos de prueba para los proyectos
 const projects = [
@@ -107,6 +109,16 @@ const projects = [
 ];
 
 function App() {
+  const { setProjects } = useProjects();
+
+  useEffect(
+    () => {
+      setProjects(projects);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
+
   return (
     <>
       <BrowserRouter>
