@@ -5,7 +5,7 @@ import CardContainer from "../components/cardsInfo/CardContainer";
 import useProjects from "../../services/useProjects";
 import { useEffect } from "react";
 function Dashboard() {
-  const { projects } = useProjects();
+const { projects } = useProjects();
 
   useEffect(
     () => {

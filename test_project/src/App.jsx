@@ -114,6 +114,7 @@ function App() {
   useEffect(
     () => {
       setProjects(projects);
+      localStorage.setItem("projects", JSON.stringify(projects));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

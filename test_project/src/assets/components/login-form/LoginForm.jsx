@@ -2,7 +2,100 @@ import logo_uca from "../../../assets/images/logo_uca.png";
 import CommonButton from "../common-button/CommonButton";
 import ButtonWithIcon from "../general/ButtonWithIcon";
 import InputIcon from "./InputIcon";
+import { useState } from "react";
+
+
 function LoginForm() {
+
+  // Este estado se envia al componente InputIcon para validar si el input esta vacio o no
+  const [inputError, setInputError] = useState(false);
+
+  const userData = {
+    "nombre": "Juan Pérez",
+    "carnet": "20220001",
+    "horasExternas": 150,
+    "horasInternas": 200,
+    "fotoPerfil": "https://example.com/foto_perfil.jpg",
+    "proyectos": {
+      "activos": [
+        {
+          "title": "Desarrollo Web",
+          "image": "https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/twj8upse9w68npgkymtb",
+          "type": "Interno",
+          "tags": [
+            { "name": "Desarrollo", "background": "#FFA500" },
+            { "name": "Frontend", "background": "#007BFF" }
+          ],
+          "modality": "Remoto",
+          "location": "Oficinas Centrales"
+        },
+        {
+          "title": "App de Gestión",
+          "image": "https://example.com/app_gestion.jpg",
+          "type": "Externo",
+          "tags": [
+            { "name": "Desarrollo", "background": "#FFA500" },
+            { "name": "Backend", "background": "#dc3545" }
+          ],
+          "modality": "Presencial",
+          "location": "Cliente"
+        },
+        {
+          "title": "Sistema de Reservas",
+          "image": "https://example.com/sistema_reservas.jpg",
+          "type": "Interno",
+          "tags": [
+            { "name": "Desarrollo", "background": "#FFA500" },
+            { "name": "Backend", "background": "#dc3545" }
+          ],
+          "modality": "Remoto",
+          "location": "Oficinas Centrales"
+        }
+      ],
+      "finalizados": [
+        {
+          "title": "App Móvil",
+          "image": "https://example.com/app_movil.jpg",
+          "type": "Externo",
+          "tags": [
+            { "name": "Desarrollo", "background": "#FFA500" },
+            { "name": "Mobile", "background": "#28a745" }
+          ],
+          "modality": "Presencial",
+          "location": "Cliente"
+        },
+        {
+          "title": "Sistema de Gestión",
+          "image": "https://example.com/sistema_gestion.jpg",
+          "type": "Interno",
+          "tags": [
+            { "name": "Desarrollo", "background": "#FFA500" },
+            { "name": "Backend", "background": "#dc3545" }
+          ],
+          "modality": "Remoto",
+          "location": "Oficinas Centrales"
+        },
+        {
+          "title": "Plataforma E-learning",
+          "image": "https://example.com/elearning.jpg",
+          "type": "Externo",
+          "tags": [
+            { "name": "Desarrollo", "background": "#FFA500" },
+            { "name": "Educación", "background": "#17a2b8" }
+          ],
+          "modality": "Remoto",
+          "location": "Cliente"
+        }
+      ]
+    }
+  }
+  
+
+  function setUserHandler() {
+    localStorage.setItem("isLoggedIn", true);
+    localStorage.setItem("user", userData);
+  }
+
   return (
     <>
       <form className="flex flex-col items-center h-screen">
@@ -16,15 +109,21 @@ function LoginForm() {
         <div className="formContent mt-10 flex flex-col items-center">
           <InputIcon
             icon={"fa-solid fa-envelope"}
-            placeholder={"CorreoElectronico"}
-            type={"mail"}
+            placeholder={"ejemplo@ejemplo.com"}
+            type={"email"}
+            canSubmit={setInputError}
           />
+          
+          
           <InputIcon
             icon={"fa-solid fa-key"}
-            placeholder={"Contraseña"}
+            placeholder={"Minimo 8 caracteres"}
             type={"password"}
+            canSubmit={setInputError}
           />
-          <CommonButton text="Iniciar Sesión" link={"/dashboard"} />
+          <div onClick={setUserHandler}>
+            <CommonButton text="Iniciar Sesión" link={inputError ? "/dashboard" : ""} />
+          </div>
           <hr />
           <div className="cuentasUca">
             <p className="mb-5">O inicia sesión usando tu cuenta:</p>
