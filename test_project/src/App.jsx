@@ -110,6 +110,7 @@ const projects = [
 
 function App() {
   const { setProjects } = useProjects();
+  
 
   useEffect(
     () => {

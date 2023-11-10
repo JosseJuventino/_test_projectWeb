@@ -3,12 +3,17 @@ import CommonButton from "../common-button/CommonButton";
 import ButtonWithIcon from "../general/ButtonWithIcon";
 import InputIcon from "./InputIcon";
 import { useState } from "react";
-
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from "../../../services/firebase";
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm() {
-
   // Este estado se envia al componente InputIcon para validar si el input esta vacio o no
-  const [inputError, setInputError] = useState(false);
+  const [inputError, setInputError] = useState(false)
+  const navigate = useNavigate();
+  //Variables para el login con Google
+  const provider = new GoogleAuthProvider();
+  provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
 
   const userData = {
     "nombre": "Juan Pérez",
@@ -89,6 +94,39 @@ function LoginForm() {
       ]
     }
   }
+
+ 
+
+
+  async function handleLoginGoogle() {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log(user);
+      // Crear un objeto de usuario con propiedades adicionales
+      const userObj = {
+        nombre: user.displayName,
+        email: user.email,
+        fotoPerfil: user.photoURL,
+        uid: user.uid,
+        horasExternas: 10,
+        horasInternas: 30,
+        proyectos: {
+          activos: [],
+          finalizados: [],
+        },
+      };
+  
+      if (user) {
+        localStorage.setItem("isLoggedIn", true);
+        localStorage.setItem("user", JSON.stringify(userObj));
+        navigate("/dashboard")
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
   
 
   function setUserHandler() {
@@ -127,10 +165,16 @@ function LoginForm() {
           <hr />
           <div className="cuentasUca">
             <p className="mb-5">O inicia sesión usando tu cuenta:</p>
+            
+            <div onClick={handleLoginGoogle}>
+
             <ButtonWithIcon
               text={"Google Cuentas UCA"}
               icon={"fa-brands fa-google"}
+          
             />
+            </div>
+        
           </div>
         </div>
       </form>
