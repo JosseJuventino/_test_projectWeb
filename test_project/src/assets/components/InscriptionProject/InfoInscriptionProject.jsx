@@ -1,4 +1,3 @@
-import TagProject from "./TagProject";
 import IconAndTitle from "../InfoProyectActive/IconAndTitle";
 import Title_Description from "../InfoProyectActive/Title_Description";
 import ButtonInscribe from "./ButtonInscribe";
@@ -50,7 +49,7 @@ function InfoInscriptionProject() {
             description={" Lzaldivar@uca.edu.sv"}
           />
         </div>
-        <ButtonInscribe text={"Inscribirse"} />
+        <ButtonInscribe link={"/inscription-form"} text={"Inscribirse"} />
       </div>
     </div>
   );
