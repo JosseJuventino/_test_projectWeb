@@ -1,13 +1,15 @@
-import IconAndTitle from "./IconAndTitle";
-import Title_Description from "./Title_Description";
+import TagProject from "./TagProject";
+import IconAndTitle from "../InfoProyectActive/IconAndTitle";
+import Title_Description from "../InfoProyectActive/Title_Description";
+import ButtonInscribe from "./ButtonInscribe";
 
-function InfoProyect() {
+function InfoInscriptionProject() {
   return (
-    <div className="flex flex-col lg:flex-row my-8">
-      <figure className="w-full h-80 object-cover lg:w-1/2 lg:h-96 lg:mb-4 lg:pr-5">
+    <div className="flex flex-col lg:flex-row  my-8">
+      <figure className="w-full h-80 object-cover lg:w-1/2 lg:h-full lg:mb-4 lg:pr-5">
         <img
-          className="object-cover w-full h-full rounded-sm"
-          src="https://www.cimat.ues.edu.sv/wp-content/uploads/2023/10/DSC_0350-1-scaled.jpg"
+          className=" w-full rounded-sm"
+          src="https://i1.rgstatic.net/ii/profile.image/372560328970243-1465836712539_Q512/Daniel-Sosa-2.jpg"
           alt="imagen Proyecto"
         />
       </figure>
@@ -15,6 +17,7 @@ function InfoProyect() {
         <div>
           <Title_Description
             titulo={"Labores Administrativas y contables "}
+            hasTag={true}
             description={
               "Apoyo en ejecutar labores administrativas y contables en el Hospital de El Salvador."
             }
@@ -37,9 +40,9 @@ function InfoProyect() {
             description={" Presencial"}
           />
           <IconAndTitle
-            icon={"fa-solid fa-flag"}
-            title={"Fecha de inicio:"}
-            description={" 10/07/2023"}
+            icon={"fa-solid fa-calendar"}
+            title={"Horario:"}
+            description={" 4 Horas a la semana de lunes a viernes."}
           />
           <IconAndTitle
             icon={"fa-solid fa-circle-info "}
@@ -47,8 +50,9 @@ function InfoProyect() {
             description={" Lzaldivar@uca.edu.sv"}
           />
         </div>
+        <ButtonInscribe text={"Inscribirse"} />
       </div>
     </div>
   );
 }
-export default InfoProyect;
+export default InfoInscriptionProject;

@@ -5,6 +5,8 @@ import Index from "./assets/views";
 import Login from "./assets/views/Login";
 import Dashboard from "./assets/views/Dashboard";
 import ProjectDetail from "./assets/views/ProjectDetail";
+import InscriptionProject from "./assets/views/InscriptionProject";
+import InscribeForm from "./assets/views/InscribeForm";
 import useProjects from "./services/useProjects";
 import { useEffect } from "react";
 
@@ -129,6 +131,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project-detail" element={<ProjectDetail />} />
+          <Route path="/inscription-project" element={<InscriptionProject />} />
+          <Route path="/inscription-form" element={<InscribeForm />} />
           {/* Rutas para proyectos */}
           {/*{projects.map((project, index) => (
             <Route
