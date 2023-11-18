@@ -6,6 +6,7 @@ import { useState } from "react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { auth } from "../../../services/firebase";
 import { useNavigate } from "react-router-dom";
+import { CheckIfUserLogin } from "../../../helpers/checkIfUserLogin";
 
 function LoginForm() {
   // Este estado se envia al componente InputIcon para validar si el input esta vacio o no
@@ -96,28 +97,16 @@ function LoginForm() {
     },
   };
 
+  const usuario = CheckIfUserLogin();
+
   async function handleLoginGoogle() {
     try {
       const result = await signInWithPopup(auth, provider);
       const user = result.user;
-      console.log(user);
-      // Crear un objeto de usuario con propiedades adicionales
-      const userObj = {
-        nombre: user.displayName,
-        email: user.email,
-        fotoPerfil: user.photoURL,
-        uid: user.uid,
-        horasExternas: 10,
-        horasInternas: 30,
-        proyectos: {
-          activos: [],
-          finalizados: [],
-        },
-      };
 
       if (user) {
         localStorage.setItem("isLoggedIn", true);
-        localStorage.setItem("user", JSON.stringify(userObj));
+        localStorage.setItem("user", usuario);
         navigate("/dashboard");
       }
     } catch (error) {

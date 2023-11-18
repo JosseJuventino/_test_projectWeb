@@ -12,6 +12,7 @@ function InscriptionProject() {
         <div className="pl-4 lg:pl-0" onClick={() => navigate("/")}>
           <ButtonWithIcon text={"Volver"} icon={"fa-solid fa-arrow-left"} />
         </div>
+        
         <InfoInscriptionProject />
       </div>
       <div></div>

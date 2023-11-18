@@ -10,16 +10,16 @@
     }
 }
 
+
 .card-container div.card{
-    animation: revealCard 1s ease-in-out;
+    animation: revealCard linear both;
     animation-timeline: view(); 
-    animation-range: entry 10% cover 20%; /* Cuando la imagen haya entrado un 20% sera el inicio
-    y cuando cubra un 30% terminara la animación*/
-    transition: 0.3s all ease-in-out;
+    animation-range: entry 10% cover 20%;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0px);
 }
 
 .card-container div.card:hover{
-    transform: translateY(-10px);
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
-    transition: 0.3s all ease-in-out;
+    transition: all 0.3s ease-out;
 }

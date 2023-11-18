@@ -22,8 +22,14 @@ export const CheckIfUserLogin = () => {
           horasExternas: 40,
           horasInternas: 30,
           proyectos: {
-            activos: [],
-            finalizados: [],
+            activos: ["8642095172", "1958730246", "5901238746"],
+            finalizados: [
+              "2309461857",
+              "9472058136",
+              "1098347652",
+              "7865021943",
+              "4023158796",
+            ],
           },
         };
 
