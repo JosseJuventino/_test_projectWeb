@@ -7,15 +7,19 @@ function Resume() {
 
   return (
     <>
-      {user ? (<div className="container mt-10 flex flex-col md:flex-row justify-around items-center">
-        <ProfileName />
-        <div className="flex items-center flex-row text-center">
-          <ResumeCircles hours={user.horasInternas} text="Horas internas" />
-          <ResumeCircles hours={user.horasExternas} text="Horas externas" />
-        </div>
-      </div>): (
-        <p>No deberias estar acá</p>
-      )}
+      <div className="flex flex-row justify-center">
+        {user ? (
+          <div className="container mt-10 flex flex-col md:flex-row justify-around items-center">
+            <ProfileName />
+            <div className="flex items-center flex-row text-center">
+              <ResumeCircles hours={user.horasInternas} text="Horas internas" />
+              <ResumeCircles hours={user.horasExternas} text="Horas externas" />
+            </div>
+          </div>
+        ) : (
+          <p>No deberias estar acá</p>
+        )}
+      </div>
     </>
   );
 }

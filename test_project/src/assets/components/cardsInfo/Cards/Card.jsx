@@ -7,7 +7,7 @@ function Card() {
     <>
       <div
         onClick={() => navigate("/inscription-project")}
-        className="flex cursor-pointer hover:-translate-y-2 transition relative flex-col mt-5 justify-center items-start bg-white rounded-lg overflow-hidden"
+        className="card flex cursor-pointer relative flex-col mt-5 justify-center items-start bg-white rounded-lg overflow-hidden"
       >
         <figure>
           <img

@@ -1,0 +1,25 @@
+@keyframes revealCard{
+    0%{
+        opacity: 0;
+        transform: translateY(100px);
+
+    }
+    100%{
+        opacity: 1;
+        
+    }
+}
+
+.card-container div.card{
+    animation: revealCard 1s ease-in-out;
+    animation-timeline: view(); 
+    animation-range: entry 10% cover 20%; /* Cuando la imagen haya entrado un 20% sera el inicio
+    y cuando cubra un 30% terminara la animación*/
+    transition: 0.3s all ease-in-out;
+}
+
+.card-container div.card:hover{
+    transform: translateY(-10px);
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    transition: 0.3s all ease-in-out;
+}

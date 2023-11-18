@@ -1,10 +1,11 @@
 import Card from "./Cards/Card";
+import "./CardContainer.css";
 function CardContainer({ text, hasButton }) {
   return (
     <>
-      <div className="mt-2 p-10">
+      <div className="mt-7 p-10">
         <h1 className="text-3xl">{text}</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div className="card-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
           <Card />
           <Card />
           <Card />
