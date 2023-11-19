@@ -40,7 +40,7 @@ function Dashboard() {
             <div>
               <CardContainer
                 text="Proyectos activos"
-                hasButton={false}
+                hasButton={true}
                 type="active"
                 projectsActives={projectActive}
                 needMorePage={projectFinished.length > 4 ? true : false}
@@ -49,7 +49,7 @@ function Dashboard() {
               <CardContainer
                 text="Proyectos finalizados"
                 hasButton={true}
-                type="active"
+                type="finished"
                 projectsActives={projectFinished}
                 needMorePage={projectFinished.length > 4 ? true : false}
               />

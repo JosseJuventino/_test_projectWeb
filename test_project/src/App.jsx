@@ -9,6 +9,7 @@ import InscriptionCE from "./assets/views/InscriptionCE";
 import InscriptionProject from "./assets/views/InscriptionProject";
 import InscribeForm from "./assets/views/InscribeForm";
 import useProjects from "./services/useProjects";
+import ProjectsUser from "./assets/views/ProjectsUser";
 import { useEffect } from "react";
 
 // Datos de prueba para los proyectos
@@ -175,8 +176,10 @@ function App() {
           <Route path="/inscription-ce" element={<InscriptionCE />} />
           <Route path="/inscription-project" element={<InscriptionProject />} />
           <Route path="/inscription-form" element={<InscribeForm />} />
+          <Route path="/dashboard/projects-actives" element={<ProjectsUser />} />
+          <Route path="/dashboard/projects-finished" element={<ProjectsUser />} />
           {/* Rutas para proyectos */}
-          
+
           {projects.map((project, index) => (
             <Route
               key={index}
@@ -185,7 +188,7 @@ function App() {
                 .toLowerCase()}`}
               element={<ProjectDetail project={project.uid} />}
             />
-              ))}
+          ))}
         </Routes>
       </BrowserRouter>
     </>
