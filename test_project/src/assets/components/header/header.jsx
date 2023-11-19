@@ -3,11 +3,11 @@ import "./header.css";
 import { FaBars } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
 import logo_uca from "../../../assets/images/logo_uca.png";
-import user from "../../../assets/images/user_default.jpeg";
+import userPhotoDefault from "../../../assets/images/user_default.jpeg";
 import ButtonHeader from "../general/ButtonHeader";
 import { linksLoggedIn, linksLoggedOut } from "../../constant/links";
-
-/** TODO: Fix the modal animation on leave */
+import { CheckIfUserLogin } from "../../../helpers/checkIfUserLogin";
+import { cutName } from "../../utils/formatName";
 
 function Header({ isLoggedIn }) {
   const [modal, setShowModal] = useState(false);
@@ -15,6 +15,8 @@ function Header({ isLoggedIn }) {
   function toggleModal() {
     setShowModal(!modal);
   }
+
+  const user = CheckIfUserLogin();
 
   function renderLinks() {
     const linksToRender = isLoggedIn ? linksLoggedIn : linksLoggedOut;
@@ -32,9 +34,9 @@ function Header({ isLoggedIn }) {
 
   function renderLoginButton() {
     const buttonProps = {
-      image: user,
+      image: user ? user.fotoPerfil : userPhotoDefault,
       className: `mx-2 ${modal ? "my-10" : ""}`,
-      text: "Iniciar Sesión",
+      text: user ? cutName(user.nombre) : "Iniciar Sesión",
     };
 
     return <ButtonHeader {...buttonProps} />;
@@ -42,7 +44,7 @@ function Header({ isLoggedIn }) {
 
   return (
     <>
-      <nav className="flex flex-row justify-between items-center py-5 px-10 text-lg">
+      <nav className="flex flex-row justify-between items-center py-5 px-10 text-lg sticky top-0 left-0 bg-background-primary z-30">
         <div className="flex flex-row justify-evenly items-center">
           <figure className="w-20">
             <img src={logo_uca} alt="logo_uca" />
@@ -56,7 +58,7 @@ function Header({ isLoggedIn }) {
           {modal ? (
             <div></div>
           ) : (
-            <FaBars className="text-3xl" onClick={toggleModal} />
+            <FaBars  className="text-3xl cursor-pointer" onClick={toggleModal} />
           )}
         </div>
       </nav>

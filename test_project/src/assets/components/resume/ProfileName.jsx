@@ -1,17 +1,43 @@
+import { CheckIfUserLogin } from "../../../helpers/checkIfUserLogin";
 const ProfileName = () => {
+  const user = CheckIfUserLogin();
+  function CapitalizarLetras(nombre) {
+    return nombre
+      .toLowerCase()
+      .replace(/\b\w/g, (letra) => letra.toUpperCase());
+    }
+
+  function cutName(completeName) {
+    const partesNombre = completeName.split(" ");
+
+    const primerNombre = partesNombre[0];
+    const primerApellido =
+      partesNombre.length > 1 ? partesNombre[partesNombre.length - 2] : "";
+    const nombreDepurado = CapitalizarLetras(
+      primerNombre + " " + primerApellido
+    );
+    return nombreDepurado;
+  }
+
   return (
     <>
-      <div className="flex flex-col justify-center items-center">
-        <figure className="w-[150px]">
-          <img
-            className="object-cover rounded-full border-black-custom border-8"
-            src="https://randomuser.me/api/portraits/lego/6.jpg"
-            alt="ProfileUser"
-          />
-        </figure>
-        <h2 className="text-2xl">José Castillo</h2>
-        <h3 className="text-xl text-gray-400">00048322</h3>
-      </div>
+      {user ? (
+        <div className="flex flex-col justify-center items-center">
+          <figure className="w-[130px] flex flex-row justify-center items-center">
+            <img
+              className="object-cover rounded-full border-black-custom w-full border-8"
+              src={user.fotoPerfil}
+              alt="ProfileUser"
+            />
+          </figure>
+          <h2 className="text-2xl">{cutName(user.nombre)}</h2>
+          <h3 className="text-xl text-gray-400">
+            {user.email.replace(/@uca\.edu\.sv$/, "")}
+          </h3>
+        </div>
+      ) : (
+        <p>No deberias estar acá</p>
+      )}
     </>
   );
 };
