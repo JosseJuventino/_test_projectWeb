@@ -8,7 +8,7 @@ function ProjectDetail({ project }) {
       <Header />
       <div className="lg:pl-20 mt-4">
         <div className="pl-4 lg:pl-0">
-          <ButtonWithIcon text={"Volver"} icon={"fa-solid fa-arrow-left"} />
+          <ButtonWithIcon text={"Volver"} link="/dashboard" icon={"fa-solid fa-arrow-left"} />
         </div>
         <InfoProyect info={project} />
       </div>

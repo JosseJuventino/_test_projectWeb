@@ -2,23 +2,25 @@ import Card from "./Cards/Card";
 import "./CardContainer.css";
 import { NavLink } from "react-router-dom";
 
+  function CardContainer({
+    text,
+    hasButton,
+    type,
+    projectsActives,
+    needMorePage,
+  }) {
 
-function CardContainer({
-  text,
-  hasButton,
-  type,
-  projectsActives,
-  needMorePage,
-}) {
-
-  let projectsSliced= projectsActives;
-  if(needMorePage){
+  
+  let projectsSliced = projectsActives;
+  console.log(projectsSliced.length);
+  if (needMorePage) {
     projectsSliced = projectsActives.slice(0, 4);
   }
- 
+
+  
   return (
     <>
-      <div className="mt-7 p-10">
+      <div className="mt-5 p-10">
         <h1 className="text-3xl">{text}</h1>
         {projectsSliced.length > 0 ? (
           <div className="card-container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">

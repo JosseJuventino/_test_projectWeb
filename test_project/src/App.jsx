@@ -10,6 +10,9 @@ import InscriptionProject from "./assets/views/InscriptionProject";
 import InscribeForm from "./assets/views/InscribeForm";
 import useProjects from "./services/useProjects";
 import ProjectsUser from "./assets/views/ProjectsUser";
+import Favorites from "./assets/views/Favorites";
+import ProjectsSearchView from "./assets/views/ProjectsSearchView";
+
 import { useEffect } from "react";
 
 // Datos de prueba para los proyectos
@@ -176,14 +179,22 @@ function App() {
           <Route path="/inscription-ce" element={<InscriptionCE />} />
           <Route path="/inscription-project" element={<InscriptionProject />} />
           <Route path="/inscription-form" element={<InscribeForm />} />
-          <Route path="/dashboard/projects-actives" element={<ProjectsUser />} />
-          <Route path="/dashboard/projects-finished" element={<ProjectsUser />} />
+          <Route
+            path="/dashboard/projects-actives"
+            element={<ProjectsUser />}
+          />
+          <Route
+            path="/dashboard/projects-finished"
+            element={<ProjectsUser />}
+          />
+          <Route path="/dashboard/favorites" element={<Favorites />} />
+          <Route path="/dashboard/projects" element={<ProjectsSearchView />} />
           {/* Rutas para proyectos */}
 
           {projects.map((project, index) => (
             <Route
               key={index}
-              path={`/project/${project.uid
+              path={`/dashboard/project/my-projects/${project.uid
                 .replace(/\s+/g, "-")
                 .toLowerCase()}`}
               element={<ProjectDetail project={project.uid} />}
