@@ -19,19 +19,19 @@ const FileUploader = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto  bg-white rounded-md shadow-md flex flex-col">
+    <div className="max-w-md mx-auto py-10 border-neutral-700 border-dashed border-4 bg-white rounded-md shadow-md flex flex-col">
       <h1 className="text-2xl font-semibold mb-2">Subir Archivos</h1>
 
       <div className="relative overflow-hidden inline-block">
       <button
         onClick={handleUpload}
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded my-5"
+        className="bg-zinc-600 hover:bg-zinc-600 text-white font-bold py-2 px-4 rounded my-5"
       >
         Subir Archivo
       </button>
       <input
         type="file"
-        accept="image/*" // Acepta solo archivos de tipo imagen
+        accept="image/*, .pdf" // Acepta solo archivos de tipo imagen
         onChange={handleFileChange}
         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
       />

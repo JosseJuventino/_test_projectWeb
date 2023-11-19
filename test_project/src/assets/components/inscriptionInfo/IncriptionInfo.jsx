@@ -4,6 +4,8 @@ import DropdownButton from "../common-button/DropdownButton";
 import "./IncriptionInfo.css";
 import FileUploader from "./FileUploader";
 import Time from "../common-button/Time";
+import CommonButton from "../common-button/CommonButton"; 
+
 
 function IncriptionInfo() {
   //const [seleccion, setSeleccion] = useState(0);
@@ -113,7 +115,7 @@ function IncriptionInfo() {
         </div>
       </div>
 
-      <div className="flex lg:flex-row flex-col justify-around mt-20">
+      <div className="flex lg:flex-row flex-col justify-around mt-20 mx-5 gap-20">
         <div className="flex flex-col ">
         <div>
           <FileUploader />
@@ -133,12 +135,15 @@ function IncriptionInfo() {
         </div>
 
         <p className="m-5">
-            Nota con la que aprobaste la materia que quieres impartir (adjuntar
-            captura de pantalla)
+            CUM de carrera (Adjuntar captura de pantalla del Portal de Estudiante)
           </p>
 
         </div>
       </div>
+
+    <div className="py-5">
+    <CommonButton   text="Inscriccion Completa" />
+    </div>
     </section>
   );
 }
