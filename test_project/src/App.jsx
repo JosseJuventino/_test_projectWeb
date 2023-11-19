@@ -5,6 +5,7 @@ import Index from "./assets/views";
 import Login from "./assets/views/Login";
 import Dashboard from "./assets/views/Dashboard";
 import ProjectDetail from "./assets/views/ProjectDetail";
+import InscriptionCE from "./assets/views/InscriptionCE";
 
 // Datos de prueba para los proyectos
 const projects = [
@@ -115,6 +116,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/project-detail" element={<ProjectDetail />} />
+          <Route path="/inscription-ce" element={<InscriptionCE />} />
           {/* Rutas para proyectos */}
           {/*{projects.map((project, index) => (
             <Route
