@@ -1,6 +1,5 @@
 import Tag from "./Tag";
 import { useNavigate } from "react-router-dom";
-
 function Card({ project }) {
   const navigate = useNavigate();
   return (
@@ -31,6 +30,7 @@ function Card({ project }) {
           </div>
           <div className="Information p-5">
             <div className="tags flex flex-row gap-1">
+
               {
                 project.tags.map((tag, index) => (
                   <Tag key={index} name={tag.name} background={tag.background} />

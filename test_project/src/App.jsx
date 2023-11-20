@@ -13,6 +13,23 @@ import { useEffect } from "react";
 // Datos de prueba para los proyectos
 const projects = [
   {
+    uid: "9472058133",
+    title: "Circulos de estudio",
+    description:
+      "Proyecto interno de diseño gráfico en estudio. Únete a nuestro equipo creativo y trabaja en proyectos de diseño emocionantes. Nos especializamos en la creación de contenido visual atractivo y único. La modalidad de trabajo es híbrida, permitiéndote equilibrar tu tiempo entre la oficina y el trabajo remoto. ¡Esperamos que te unas a nosotros y aportes tu creatividad al equipo!",
+    startDate: "2023-11-20",
+    contactEmail: "desarrollo.web@example.com",
+    image:
+      "2wCEAAoHCBUIBxgVFBYWFhgaHB4cGRwaHRwcGhoaGR0ZHB8eIRwlITUlHCwrLRwYKDomKy80NTY6ISVIQDs0QDw0NzEBDAwMEA8QHhISHzQkJSc2NjQ0NjQ0NDQ0ND0xNDE8Pjc0NDQ0NDU0PzQ3NDQxNDE0NDQ1NDQ0NDE0NDQxPzQ0Mf",
+    type: "Interno",
+    tags: [
+      { name: "Grafico", background: "#FFA500" },
+      { name: "Frontend", background: "#007BFF" },
+    ],
+    modality: "Remoto",
+    location: "Oficinas Centrales",
+  },
+  {
     uid: "9472058136",
     title: "Desarrollo Web",
     description:
@@ -152,7 +169,6 @@ const projects = [
 
 function App() {
   const { setProjects } = useProjects();
-  
 
   useEffect(
     () => {
@@ -174,7 +190,7 @@ function App() {
           <Route path="/inscription-project" element={<InscriptionProject />} />
           <Route path="/inscription-form" element={<InscribeForm />} />
           {/* Rutas para proyectos */}
-          
+
           {projects.map((project, index) => (
             <Route
               key={index}
@@ -183,7 +199,7 @@ function App() {
                 .toLowerCase()}`}
               element={<ProjectDetail project={project.uid} />}
             />
-              ))}
+          ))}
         </Routes>
       </BrowserRouter>
     </>
