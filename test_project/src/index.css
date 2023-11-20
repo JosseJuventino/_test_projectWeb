@@ -4,3 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer components {
+    input:checked + label {
+        background-color: green;
+    }
+}
