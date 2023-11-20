@@ -8,6 +8,7 @@ export default {
         "hover-black-custom": "#F5F7F2",
         "text-secondary": "#686868",
         "background-primary": "#F5F7F2;",
+        "bg-inputs": "#D9D9D9",
       },
       fontFamily: {
         primary: ["Poppins", "sans-serif"],

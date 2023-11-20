@@ -1,16 +1,36 @@
 import { useEffect, useState } from "react";
 import IconAndTitle from "./IconAndTitle";
 import Title_Description from "./Title_Description";
-
+import { CheckIfUserLogin } from "../../../helpers/checkIfUserLogin";
 function InfoProyect({ info }) {
 
+  const user = CheckIfUserLogin();
   const [project, setProject] = useState({});
+  const [startDateState, setStartDate] = useState("");
+  const [finishedDate, setFinishedDate] = useState("");
 
   useEffect(() => {
     const projects = JSON.parse(localStorage.getItem("projects"));
     const project = projects.find((project) => project.uid === info);
     setProject(project);
-  }, [info]);
+
+   
+    if (user) {
+      user.proyectos.activos.forEach((activesUser) => {
+
+        if(activesUser.idProject === project.uid){
+          setStartDate(activesUser.startDate)
+        }
+      });
+
+      user.proyectos.finalizados.forEach((activesUser) => {
+        if (activesUser.idProject === project.uid) {
+          setStartDate(activesUser.startDate)
+          setFinishedDate(activesUser.finishedDate);
+        }
+      });
+    }
+  }, [info, user]);
   
 
 
@@ -46,11 +66,23 @@ function InfoProyect({ info }) {
             title={"Modalidad:"}
             description={project.modality}
           />
+
           <IconAndTitle
-            icon={"fa-solid fa-flag"}
+            icon={"fa-solid fa-play"}
             title={"Fecha de inicio:"}
-            description={project.startDate}
+            description={startDateState}
           />
+
+          {finishedDate != "" ? (
+            <IconAndTitle
+              icon={"fa-solid fa-stop"}
+              title={"Fecha de finalización:"}
+              description={project.startDate}
+            />
+          ) : (
+            ""
+          )}
+
           <IconAndTitle
             icon={"fa-solid fa-circle-info "}
             title={"Mas información:"}

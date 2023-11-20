@@ -4,6 +4,8 @@ import ContactNumber from "../components/InscribeForm/ContactNumber";
 import Title_Description from "../components/InfoProyectActive/Title_Description";
 import ButtonWithIcon from "../components/general/ButtonWithIcon";
 import Dropdown from "../components/InscribeForm/Dropdown";
+import ButtonInscribe from "../components/InscriptionProject/ButtonInscribe";
+
 function InscribeForm() {
   return (
     <div>
@@ -28,12 +30,24 @@ function InscribeForm() {
               <p className="pl-0 pb-3 lg:pl-4">Numero de Contacto: </p>
             </div>
             <ContactNumber
-              // icon={"fa-solid fa-phone"}
-              placeholder={"0000-0000"}
-              type={"text"}
+              placeholder={"00000000"}
+              type={"telefono"}
             />
             <p className="pl-0 lg:pl-4 pb-3 pt-6">Año de carrera: </p>
             <Dropdown />
+            <div className="pl-4 pt-7">
+              <input
+                type="checkbox"
+                id="Terms"
+                name="Terms"
+                value="Accepted"
+              ></input>
+              <label className="pl-2 " htmlFor="Terms">
+                Acepto comprometerme a realizar el servicio social.
+              </label>
+            </div>
+
+            <ButtonInscribe text="Inscribirse" />
           </div>
         </div>
       </div>

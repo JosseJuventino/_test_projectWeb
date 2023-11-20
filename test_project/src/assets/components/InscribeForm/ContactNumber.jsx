@@ -20,7 +20,7 @@ function ContactNumber({ icon, placeholder, type, canSubmit }) {
       canSubmit(true);
 
       // Validar solo números y máximo de 8 caracteres
-      if (type === "text" && e.target.value.length > 0) {
+      if (type === "telefono" && e.target.value.length > 0) {
         const regex = /^[0-9]{1,8}$/;
         if (!regex.test(e.target.value)) {
           createError("Este campo solo permite números y hasta 8 dígitos");

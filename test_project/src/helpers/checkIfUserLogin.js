@@ -6,11 +6,7 @@ export const CheckIfUserLogin = () => {
   const [user, setUser] = useState(null);
 
   const checkUser = () => {
-    const localStorageUser = JSON.parse(localStorage.getItem("user"));
-
-    if (localStorageUser) {
-      setUser(localStorageUser);
-    }
+  
 
     const unsuscribe = onAuthStateChanged(auth, (authUser) => {
       if (authUser) {
@@ -22,15 +18,40 @@ export const CheckIfUserLogin = () => {
           horasExternas: 40,
           horasInternas: 30,
           proyectos: {
-            activos: ["8642095172", "1958730246", "5901238746"],
+            activos: [
+              { idProject: "8642095172", startDate: "10/09/2022" },
+              { idProject: "1958730246", startDate: "10/09/2022" },
+              { idProject: "5901238746", startDate: "10/09/2022" },
+            ],
             finalizados: [
-              "2309461857",
-              "9472058136",
-              "1098347652",
-              "7865021943",
-              "4023158796",
+              {
+                idProject: "2309461857",
+                startDate: "10/09/2022",
+                finishedDate: "10/10/2022",
+              },
+              {
+                idProject: "9472058136",
+                startDate: "10/09/2022",
+                finishedDate: "10/10/2022",
+              },
+              {
+                idProject: "1098347652",
+                startDate: "10/09/2022",
+                finishedDate: "10/10/2022",
+              },
+              {
+                idProject: "7865021943",
+                startDate: "10/09/2022",
+                finishedDate: "10/10/2022",
+              },
+              {
+                idProject: "4023158796",
+                startDate: "10/09/2022",
+                finishedDate: "10/10/2022",
+              },
             ],
           },
+          favoritos: ["1958730246", "5901238746"],
         };
 
         localStorage.setItem("user", JSON.stringify(userObject));

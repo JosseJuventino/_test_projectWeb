@@ -9,10 +9,31 @@ import InscriptionCE from "./assets/views/InscriptionCE";
 import InscriptionProject from "./assets/views/InscriptionProject";
 import InscribeForm from "./assets/views/InscribeForm";
 import useProjects from "./services/useProjects";
+import ProjectsUser from "./assets/views/ProjectsUser";
+import Favorites from "./assets/views/Favorites";
+import ProjectsSearchView from "./assets/views/ProjectsSearchView";
+
 import { useEffect } from "react";
 
 // Datos de prueba para los proyectos
 const projects = [
+  {
+    uid: "9472058133",
+    title: "Circulos de estudio",
+    description:
+      "Proyecto interno de diseño gráfico en estudio. Únete a nuestro equipo creativo y trabaja en proyectos de diseño emocionantes. Nos especializamos en la creación de contenido visual atractivo y único. La modalidad de trabajo es híbrida, permitiéndote equilibrar tu tiempo entre la oficina y el trabajo remoto. ¡Esperamos que te unas a nosotros y aportes tu creatividad al equipo!",
+    startDate: "2023-11-20",
+    contactEmail: "desarrollo.web@example.com",
+    image:
+      "2wCEAAoHCBUIBxgVFBYWFhgaHB4cGRwaHRwcGhoaGR0ZHB8eIRwlITUlHCwrLRwYKDomKy80NTY6ISVIQDs0QDw0NzEBDAwMEA8QHhISHzQkJSc2NjQ0NjQ0NDQ0ND0xNDE8Pjc0NDQ0NDU0PzQ3NDQxNDE0NDQ1NDQ0NDE0NDQxPzQ0Mf",
+    type: "Interno",
+    tags: [
+      { name: "Grafico", background: "#FFA500" },
+      { name: "Frontend", background: "#007BFF" },
+    ],
+    modality: "Remoto",
+    location: "Oficinas Centrales",
+  },
   {
     uid: "9472058136",
     title: "Desarrollo Web",
@@ -153,7 +174,6 @@ const projects = [
 
 function App() {
   const { setProjects } = useProjects();
-  
 
   useEffect(
     () => {
@@ -175,17 +195,27 @@ function App() {
           <Route path="/inscription-ce" element={<InscriptionCE />} />
           <Route path="/inscription-project" element={<InscriptionProject />} />
           <Route path="/inscription-form" element={<InscribeForm />} />
+          <Route
+            path="/dashboard/projects-actives"
+            element={<ProjectsUser />}
+          />
+          <Route
+            path="/dashboard/projects-finished"
+            element={<ProjectsUser />}
+          />
+          <Route path="/dashboard/favorites" element={<Favorites />} />
+          <Route path="/dashboard/projects" element={<ProjectsSearchView />} />
           {/* Rutas para proyectos */}
-          
+
           {projects.map((project, index) => (
             <Route
               key={index}
-              path={`/project/${project.uid
+              path={`/dashboard/project/my-projects/${project.uid
                 .replace(/\s+/g, "-")
                 .toLowerCase()}`}
               element={<ProjectDetail project={project.uid} />}
             />
-              ))}
+          ))}
         </Routes>
       </BrowserRouter>
     </>

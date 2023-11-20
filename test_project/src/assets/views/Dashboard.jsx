@@ -11,24 +11,30 @@ function Dashboard() {
   const [projectFinished, setProjectFinished] = useState([]);
 
   useEffect(() => {
-    if (user) {
-      let projectsActivosUid = user.proyectos.activos;
-      let projectsFinalizadosUid = user.proyectos.finalizados;
-      let proyectos = localStorage.getItem("projects");
-      proyectos = JSON.parse(proyectos);
+   if (user) {
+     const uidProjectsActivos = user.proyectos.activos.map(
+       (project) => project.idProject
+     );
+     const uidProjectsFinalizados = user.proyectos.finalizados.map(
+       (project) => project.idProject
+     );
 
-      let projectsActiveFiltered = proyectos.filter((project) => {
-        return projectsActivosUid.includes(project.uid);
-      });
+     const proyectos = JSON.parse(localStorage.getItem("projects")) || [];
 
-      let projectsFinishedFiltered = proyectos.filter((project) => {
-        return projectsFinalizadosUid.includes(project.uid);
-      });
+     const projectsActiveFiltered = proyectos.filter((project) =>
+       uidProjectsActivos.includes(project.uid)
+     );
+     const projectsFinishedFiltered = proyectos.filter((project) =>
+       uidProjectsFinalizados.includes(project.uid)
+     );
 
-      setProjectFinished(projectsFinishedFiltered);
-      setProjectActive(projectsActiveFiltered);
-    }
-  }, [user]);
+     setProjectFinished(projectsFinishedFiltered);
+     setProjectActive(projectsActiveFiltered);
+     
+   }
+}, [user]);
+
+console.log(projectActive);
 
   return (
     <>
@@ -40,7 +46,7 @@ function Dashboard() {
             <div>
               <CardContainer
                 text="Proyectos activos"
-                hasButton={false}
+                hasButton={true}
                 type="active"
                 projectsActives={projectActive}
                 needMorePage={projectFinished.length > 4 ? true : false}
@@ -49,7 +55,7 @@ function Dashboard() {
               <CardContainer
                 text="Proyectos finalizados"
                 hasButton={true}
-                type="active"
+                type="finished"
                 projectsActives={projectFinished}
                 needMorePage={projectFinished.length > 4 ? true : false}
               />

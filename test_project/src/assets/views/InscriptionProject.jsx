@@ -8,7 +8,7 @@ function InscriptionProject() {
   return (
     <>
       <Header />
-      <div className="lg:pl-20 mt-4">
+      <div className="mt-4 lg:pl-20">
         <div className="pl-4 lg:pl-0" onClick={() => navigate("/")}>
           <ButtonWithIcon text={"Volver"} icon={"fa-solid fa-arrow-left"} />
         </div>
