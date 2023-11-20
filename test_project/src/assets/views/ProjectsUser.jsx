@@ -8,14 +8,21 @@ import ButtonWithIcon from "../components/general/ButtonWithIcon";
 import { useNavigate } from "react-router-dom";
 
 function ProjectsUser() {
+  // Obtener el usuario actual
   const user = CheckIfUserLogin();
+  // Hook de navegación para cambiar de ruta
   const navigate = useNavigate();
+  // Estados para almacenar proyectos activos y finalizados
   const [projectActive, setProjectActive] = useState([]);
   const [projectFinished, setProjectFinished] = useState([]);
+  // Obtener la ubicación actual de la aplicación
   const location = useLocation();
 
+  // Efecto que se ejecuta cuando el componente se monta o cuando el usuario cambia
   useEffect(() => {
+    // Verificar si hay un usuario autenticado
     if (user) {
+      // Obtener las ID de proyectos activos y finalizados del usuario
       const uidProjectsActivos = user.proyectos.activos.map(
         (project) => project.idProject
       );
@@ -23,17 +30,19 @@ function ProjectsUser() {
         (project) => project.idProject
       );
 
+      // Obtener todos los proyectos desde el almacenamiento local
       const proyectos = JSON.parse(localStorage.getItem("projects")) || [];
 
-      /** Filtrando los proyectos activos */
+      /** Filtrar los proyectos activos */
       const projectsActiveFiltered = proyectos.filter((project) =>
         uidProjectsActivos.includes(project.uid)
       );
-      /** Filtrando los proyectos finaizados */
+      /** Filtrar los proyectos finalizados */
       const projectsFinishedFiltered = proyectos.filter((project) =>
         uidProjectsFinalizados.includes(project.uid)
       );
 
+      // Actualizar estados con los proyectos filtrados
       setProjectFinished(projectsFinishedFiltered);
       setProjectActive(projectsActiveFiltered);
     }
@@ -41,14 +50,18 @@ function ProjectsUser() {
 
   return (
     <>
+      {/* Componente de encabezado */}
       <Header />
+      {/* Botón de retorno a la página de inicio del dashboard */}
       <div className="mt-20 ml-5" onClick={() => navigate("/dashboard")}>
         <ButtonWithIcon text={"Volver"} icon={"fa-solid fa-arrow-left"} />
       </div>
+      {/* Verificar la ruta actual y renderizar proyectos activos */}
       {location.pathname === "/dashboard/projects-actives" && (
         <div>
-          <h2 className="text-center text-3xl mt-2">Proyectos Activos</h2>
+          <h2 className="mt-2 text-3xl text-center">Proyectos Activos</h2>
           <div>
+            {/* Verificar si hay proyectos activos para mostrar */}
             {projectActive.length > 0 ? (
               <CardContainer
                 text=""
@@ -63,10 +76,12 @@ function ProjectsUser() {
           </div>
         </div>
       )}
-      {location.pathname === "/dashboard/projects-finished" /**Obteiene en que enlace estamos. */ && (
+      {/* Verificar la ruta actual y renderizar proyectos finalizados */}
+      {location.pathname === "/dashboard/projects-finished" && (
         <div>
-          <h2 className="text-center text-3xl mt-2">Proyectos Finalizados</h2>
+          <h2 className="mt-2 text-3xl text-center">Proyectos Finalizados</h2>
           <div>
+            {/* Verificar si hay proyectos finalizados para mostrar */}
             {projectFinished.length > 0 ? (
               <CardContainer
                 text=""
@@ -81,6 +96,7 @@ function ProjectsUser() {
           </div>
         </div>
       )}
+      {/* Componente de pie de página */}
       <Footer />
     </>
   );

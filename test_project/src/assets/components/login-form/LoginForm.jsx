@@ -122,14 +122,14 @@ function LoginForm() {
   return (
     <>
       <form className="flex flex-col items-center h-screen">
-        <div className="headerForm flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center headerForm">
           <figure className="w-[60%] mt-5">
             <img className="object-cover" src={logo_uca} alt="Logo UCA" />
           </figure>
-          <h2 className="text-4xl mt-5">¡Bienvenido!</h2>
+          <h2 className="mt-5 text-4xl">¡Bienvenido!</h2>
           <h3 className="text-xl">Inicio de sesión</h3>
         </div>
-        <div className="formContent mt-10 flex flex-col items-center">
+        <div className="flex flex-col items-center mt-10 formContent">
           <InputIcon
             icon={"fa-solid fa-envelope"}
             placeholder={"ejemplo@ejemplo.com"}
